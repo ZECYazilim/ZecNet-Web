@@ -1,0 +1,3 @@
+# ZecNet-Web
+Sürekli güncellenecek Web Projesi...
+Açıklama eklenecek.
