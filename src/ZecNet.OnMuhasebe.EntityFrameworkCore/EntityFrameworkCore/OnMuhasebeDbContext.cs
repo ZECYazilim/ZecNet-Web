@@ -12,6 +12,23 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using ZecNet.OnMuhasebe.BankaHesaplar;
+using ZecNet.OnMuhasebe.Bankalar;
+using ZecNet.OnMuhasebe.BankaSubeler;
+using ZecNet.OnMuhasebe.Birimler;
+using ZecNet.OnMuhasebe.Cariler;
+using ZecNet.OnMuhasebe.Configurations;
+using ZecNet.OnMuhasebe.Depolar;
+using ZecNet.OnMuhasebe.Donemler;
+using ZecNet.OnMuhasebe.Faturalar;
+using ZecNet.OnMuhasebe.Hizmetler;
+using ZecNet.OnMuhasebe.Kasalar;
+using ZecNet.OnMuhasebe.Makbuzlar;
+using ZecNet.OnMuhasebe.Masraflar;
+using ZecNet.OnMuhasebe.OzelKodlar;
+using ZecNet.OnMuhasebe.Parametreler;
+using ZecNet.OnMuhasebe.Stoklar;
+using ZecNet.OnMuhasebe.Subeler;
 
 namespace ZecNet.OnMuhasebe.EntityFrameworkCore;
 
@@ -51,6 +68,22 @@ public class OnMuhasebeDbContext :
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
     #endregion
+    public DbSet<Banka> Bankalar { get; set; }
+    public DbSet<BankaSube> BankaSubeler { get; set; }
+    public DbSet<BankaHesap> BankaHesaplar { get; set; }
+    public DbSet<Birim> Birimler { get; set; }
+    public DbSet<Cari> Cariler { get; set; }
+    public DbSet<Depo> Depolar { get; set; }
+    public DbSet<Donem> Donemler { get; set; }
+    public DbSet<FirmaParametre> FirmaParametreler { get; set; }
+    public DbSet<Fatura> Faturalar { get; set; }
+    public DbSet<Hizmet> Hizmetler { get; set; }
+    public DbSet<Kasa> Kasalar { get; set; }
+    public DbSet<Makbuz> Makbuzlar { get; set; }
+    public DbSet<Masraf> Masraflar { get; set; }
+    public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Stok> Stoklar { get; set; }
+    public DbSet<Sube> Subeler { get; set; }
 
     public OnMuhasebeDbContext(DbContextOptions<OnMuhasebeDbContext> options)
         : base(options)
@@ -75,11 +108,23 @@ public class OnMuhasebeDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(OnMuhasebeConsts.DbTablePrefix + "YourEntities", OnMuhasebeConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.ConfigureBanka(); // kod kalabalığını engellemiş olduk.
+        builder.ConfigureBankaSube();
+        builder.ConfigureBankaHesap();
+        builder.ConfigureBirim();
+        builder.ConfigureCari();
+        builder.ConfigureDepo();
+        builder.ConfigureDonem();
+        builder.ConfigureFatura();
+        builder.ConfigureFaturaHareket();
+        builder.ConfigureFirmaParametre();
+        builder.ConfigureHizmet();
+        builder.ConfigureKasa();
+        builder.ConfigureMakbuz();
+        builder.ConfigureMakbuzHareket();
+        builder.ConfigureMasraf();
+        builder.ConfigureOzelKod();
+        builder.ConfigureStok();
+        builder.ConfigureSube();
     }
 }
