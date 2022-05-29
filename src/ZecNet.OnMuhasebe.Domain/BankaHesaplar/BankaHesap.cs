@@ -17,4 +17,7 @@ public class BankaHesap:FullAuditedAggregateRoot<Guid>
     public OzelKod OzelKod1 { get; set; }
     public OzelKod OzelKod2 { get; set; }
     public Sube Sube { get; set; }
+
+    public ICollection<Makbuz> Makbuzlar { get; set; }
+    public ICollection<MakbuzHareket> MakbuzHareketler { get; set; }
 }
