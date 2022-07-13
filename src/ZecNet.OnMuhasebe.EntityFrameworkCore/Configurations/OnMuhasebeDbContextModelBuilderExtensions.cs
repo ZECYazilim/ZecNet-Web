@@ -804,7 +804,8 @@ public static class OnMuhasebeDbContextModelBuilderExtensions
             //*********relations*********//
             b.HasOne(x => x.Cari)
                 .WithMany(x => x.Makbuzlar)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.NoAction);           
+               
             //
             b.HasOne(x => x.Kasa)
                 .WithMany(x => x.Makbuzlar)
