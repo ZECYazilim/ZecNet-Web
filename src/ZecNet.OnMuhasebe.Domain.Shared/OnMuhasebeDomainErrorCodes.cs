@@ -2,5 +2,6 @@
 
 public static class OnMuhasebeDomainErrorCodes
 {
-    /* You can add your business exception error codes here, as constants */
+    public const string DuplicateCode = "Exception:00001";
+    public const string CanNotBeDelated = "Exception:00002";
 }

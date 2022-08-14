@@ -14,17 +14,18 @@ public class BankaAppService : OnMuhasebeAppService, IBankaAppService
     {
         _bankaRepository = bankaRepository;
     }
-
     public virtual async Task<SelectBankaDto> GetAsync(Guid id)
     {
-        var entity = await _bankaRepository.GetAsync(id,b=>b.Id==id);
+        var entity = await _bankaRepository.GetAsync(id,b=>b.Id==id,b=>b.OzelKod1,b=>b.OzelKod2);
         return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
     }
     public virtual async Task<PagedResultDto<ListBankaDto>> GetListAsync(BankaListParameterDto input)
     {
         var entities = await _bankaRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount,
             b => b.Durum == input.Durum,//predicate
-            b => b.Kod);//orderby
+            b => b.Kod,
+            b=>b.OzelKod1,//include properties
+            b=>b.OzelKod2);//orderby
 
         var totalCount = await _bankaRepository.CountAsync(b => b.Durum == input.Durum);
 
