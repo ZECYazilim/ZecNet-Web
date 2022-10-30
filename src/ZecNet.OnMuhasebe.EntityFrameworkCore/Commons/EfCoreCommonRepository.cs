@@ -23,7 +23,6 @@ public class EfCoreCommonRepository<TEntity> : EfCoreRepository<OnMuhasebeDbCont
     {
         var queryable = await WithDetailsAsync(includeProperties);
         TEntity entity;
-
         if(predicate != null)
         {
             entity = await queryable.FirstOrDefaultAsync(predicate);

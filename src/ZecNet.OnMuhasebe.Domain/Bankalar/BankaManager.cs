@@ -33,7 +33,6 @@ public class BankaManager:DomainService
 
         await _ozelKodRepository.EntityAnyAsync(ozelKod2Id, OzelKodTuru.OzelKod2, KartTuru.Banka, entity.OzelKod2Id != ozelKod2Id);
 
-
     }
     public async Task CheckDeleteAsync(Guid id)
     {
